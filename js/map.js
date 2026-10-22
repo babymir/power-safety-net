@@ -23,10 +23,10 @@
     "시군구": "금천구"
   };
   const 판정글 = {
-    crit: "119 연락",
-    assign: "자원 보내기",
-    short: "자원 부족",
-    ok: "대기"
+    crit: "119에 알리기",
+    assign: "비상전원 보내기",
+    short: "비상전원 부족",
+    ok: "기다려도 됨"
   };
   const 등급글 = {
     A: "제조사 사양",
@@ -136,7 +136,7 @@
     if (r) {
       const g = r.가구;
       const 자원 = r.배정 ? `${esc(r.배정.자원.id)} ${esc(자원이름(r.배정.자원))} · ${esc(r.배정.자원.거점)}에서 ${길이(r.배정.도착h)} (${시각(r.배정.도착h)} 도착)` : r.상태.코드 === "ok" ? "필요 없음" : "남은 자원 없음";
-      put($("pick"), `<h2 class="box-tit">${esc(g.id)} <span class="krds-badge pk-${r.상태.코드}">${판정글[r.상태.코드]}</span></h2>\n        <dl class="pick-dl">\n          <div><dt>구역</dt><dd>${esc(g.구역)}</dd></div>\n          <div><dt>기기</dt><dd>${g.기기.map((d => esc(D.기기[d].모델))).join("<br>")}</dd></div>\n          <div><dt>버티는 시간</dt><dd><strong class="${r.안전h < 1 ? "t-danger" : ""}">${길이(r.안전h)}</strong> (${등급글[g.상태.근거]} 기준)</dd></div>\n          <div><dt>보낼 자원</dt><dd>${자원}</dd></div>\n        </dl>\n        <a class="krds-btn small secondary" href="index.html">운영자 화면에서 승인하기</a>`);
+      put($("pick"), `<h2 class="box-tit">${esc(g.id)} <span class="krds-badge pk-${r.상태.코드}">${판정글[r.상태.코드]}</span></h2>\n        <dl class="pick-dl">\n          <div><dt>구역</dt><dd>${esc(g.구역)}</dd></div>\n          <div><dt>기기</dt><dd>${g.기기.map((d => esc(D.기기[d].모델))).join("<br>")}</dd></div>\n          <div><dt>버티는 시간</dt><dd><strong class="${r.안전h < 1 ? "t-danger" : ""}">${길이(r.안전h)}</strong> (${등급글[g.상태.근거]} 기준)</dd></div>\n          <div><dt>보낼 자원</dt><dd>${자원}</dd></div>\n        </dl>\n        <a class="krds-btn small secondary" href="ops.html">정전 대응 현황에서 승인하기</a>`);
       return;
     }
     const p = 거점들().find((x => x.이름 === state.pick));
@@ -161,7 +161,7 @@
     })).join(""));
     const 부족 = 결과.filter((r => r.상태.코드 === "short")).length;
     const 줄 = [];
-    if (window.공통.수정있음()) 줄.push(`<p>자원대장을 원래 값에서 바꿨습니다. 운영자 화면 배정도 바뀐 값으로 계산됩니다. <button type="button" class="krds-btn small tertiary" id="reset">원래 값으로 되돌리기</button></p>`);
+    if (window.공통.수정있음()) 줄.push(`<p>비상전원 목록을 원래 값에서 바꿨습니다. 정전 대응 현황의 배정도 바뀐 값으로 계산됩니다. <button type="button" class="krds-btn small tertiary" id="reset">원래 값으로 되돌리기</button></p>`);
     if (부족) 줄.push(`<p class="t-danger">이 시나리오에서 자원이 모자란 가구가 ${부족}곳입니다.</p>`);
     put($("ledgerAlert"), 줄.join(""));
     if ($("reset")) $("reset").onclick = () => {
@@ -195,10 +195,10 @@
   function 머리() {
     const s = D.시나리오[state.scen];
     const d = 발생시각();
-    put($("lead"), `${d.getMonth() + 1}월 ${d.getDate()}일 ${시각(0)} 정전 · ${esc(s.이름)} · 가구 ${s.가구.length}곳 · 비상전원 거점 ${거점들().length}곳`);
+    put($("lead"), `<strong>${d.getMonth() + 1}월 ${d.getDate()}일 ${시각(0)} 정전 발생</strong> · 등록 가구 ${s.가구.length}곳 · 비상전원 보관 장소 ${거점들().length}곳`);
     put($("scen"), Object.entries(D.시나리오).map((([k, v]) => {
       const on = k === state.scen;
-      return `<li role="tab" aria-selected="${on}" class="${on ? "active" : ""}"><button type="button" class="btn-tab" data-k="${k}">${esc(v.이름)}</button></li>`;
+      return `<li role="tab" aria-selected="${on}" class="${on ? "active" : ""}"><button type="button" class="btn-tab" data-k="${k}">${esc(v.이름)} (${v.가구.length}가구)</button></li>`;
     })).join(""));
     $("scen").querySelectorAll("button").forEach((b => b.onclick = () => {
       state.scen = b.dataset.k;

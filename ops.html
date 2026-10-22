@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>전력안심망 운영자 화면</title>
+<link rel="stylesheet" href="vendor/krds/krds.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="svc-head">
+  <div class="inner">
+    <a class="svc-name" href="index.html">전력안심망</a>
+    <span class="svc-role">운영자</span>
+    <nav class="svc-nav" aria-label="운영자 메뉴">
+      <a href="ops.html" aria-current="page">정전 대응 현황</a>
+      <a href="map.html">지도 · 비상전원</a>
+    </nav>
+    <span class="krds-badge bg-light-gray">시연용 · 가상 데이터</span>
+  </div>
+</header>
+
+<main class="inner page">
+  <div class="page-title">
+    <h1>정전 대응 현황</h1>
+    <p class="lead">구청 담당자 화면입니다. 정전 지역에서 기기가 먼저 멈추는 집부터 보여 주고, 보낼 비상전원을 추천합니다. 담당자는 확인하고 승인만 누르면 됩니다.</p>
+  </div>
+
+  <p class="scen-label" id="scenLabel">시연 상황 고르기</p>
+  <div class="krds-tab-area">
+    <div class="tab line">
+      <ul role="tablist" id="scen" aria-labelledby="scenLabel"></ul>
+    </div>
+  </div>
+  <p class="event" id="lead"></p>
+
+  <section class="todo-box" id="todo" aria-labelledby="todoTit"></section>
+
+  <div class="layout">
+    <div id="groups"></div>
+    <aside class="side">
+      <details class="box fold" id="resBox" open>
+        <summary><span class="box-tit">비상전원 현황</span><span class="fold-sum" id="resSum"></span></summary>
+        <ul class="res-list" id="res"></ul>
+      </details>
+      <details class="box fold" id="ruleBox" open>
+        <summary><span class="box-tit">순서를 정하는 방법</span></summary>
+        <ol class="rule-list">
+          <li>기기가 버티는 시간이 짧고 비상전원이 늦게 닿는 집을 먼저 보여 줍니다.</li>
+          <li>기기 종류로 순서를 정하지 않습니다.</li>
+          <li>버티는 시간은 제조사 사양을 낮춰 잡아 계산합니다. 보호자가 적은 값은 시간을 줄이기만 하고 늘리지 않습니다.</li>
+          <li>출력·전원 종류·케이블이 기기에 맞는 비상전원만 추천합니다.</li>
+          <li>복구 예상 시각과 이동 시간은 가정값입니다.</li>
+        </ol>
+        <button type="button" class="krds-btn small text" id="openAssume">가정값과 출처 보기</button>
+      </details>
+    </aside>
+  </div>
+
+  <section class="box assume" id="assume" hidden></section>
+</main>
+
+<script src="js/data.js"></script>
+<script src="js/common.js"></script>
+<script src="js/rules.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

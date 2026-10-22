@@ -3,66 +3,53 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>전력안심망 운영자 화면</title>
+<title>전력안심망</title>
 <link rel="stylesheet" href="vendor/krds/krds.min.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header class="svc-head">
-  <div class="inner">
+  <div class="inner narrow">
     <a class="svc-name" href="index.html">전력안심망</a>
-    <span class="svc-role">운영자</span>
-    <nav class="svc-nav" aria-label="운영자 메뉴">
-      <a href="index.html" aria-current="page">정전 대응 현황</a>
-      <a href="map.html">지도 · 자원대장</a>
-    </nav>
-    <span class="krds-badge bg-light-gray">시연용 · 가상 데이터</span>
+    <span class="krds-badge bg-light-gray">시연용</span>
   </div>
 </header>
 
-<main class="inner page">
+<main class="inner narrow page home">
   <div class="page-title">
-    <h1>정전 대응 현황</h1>
-    <p class="lead" id="lead"></p>
+    <h1>정전 때 생명유지장치를 쓰는 집에<br>비상전원을 먼저 보냅니다</h1>
+    <p class="lead">인공호흡기·산소발생기는 정전이 나면 배터리로 몇 시간밖에 버티지 못합니다. 전력안심망은 집마다 기기가 언제 멈출지 미리 계산해 두고, 정전이 나면 구청이 <strong>먼저 멈추는 집부터</strong> 비상전원을 보내거나 119에 알리도록 돕습니다.</p>
+    <p class="home-fact">전국 생명유지장치 사용 가구 <strong>22,254가구</strong> <span>(한국전력 전기요금 복지할인 신청 기준, 2026년 1월)</span></p>
   </div>
 
-  <div class="krds-tab-area">
-    <div class="tab line">
-      <ul role="tablist" id="scen"></ul>
+  <section class="home-sec">
+    <h2>써 보기</h2>
+    <div class="home-roles">
+      <a class="role" href="register.html">
+        <span class="role-who">보호자</span>
+        <strong>기기 등록하고 정전 대비 카드 받기</strong>
+        <span>집에서 생명유지장치를 쓰는 가족이 휴대폰으로 씁니다.</span>
+      </a>
+      <a class="role" href="ops.html">
+        <span class="role-who">구청 담당자</span>
+        <strong>정전 대응 현황 보기</strong>
+        <span>정전이 났다고 가정한 시연 상황에서 순서 확인과 승인을 해 봅니다.</span>
+      </a>
     </div>
-  </div>
+  </section>
 
-  <div id="alert"></div>
+  <section class="home-sec">
+    <h2>어떻게 동작하나요</h2>
+    <ol class="home-flow">
+      <li><b>평소</b> 보호자가 휴대폰으로 기기를 등록합니다. 라벨 사진을 찍거나 목록에서 고르면, 정전 때 기기가 버티는 시간을 알려 주고 정전 대비 카드를 만들어 줍니다.</li>
+      <li><b>정전이 나면</b> 구청 화면에 정전 지역의 등록 가구가 기기가 먼저 멈추는 순서로 나타나고, 가까이 있고 기기에 맞는 비상전원(파워뱅크·산소통 등)을 추천합니다.</li>
+      <li><b>구청이 승인하면</b> 담당자가 추천을 확인하고 "비상전원 보내기" 또는 "119에 알리기"를 누릅니다. 119에는 승인한 뒤에만 위치·기기 종류·멈출 수 있는 시각만 전달합니다.</li>
+    </ol>
+  </section>
 
-  <ul class="summary" id="summary"></ul>
-
-  <div class="layout">
-    <div id="groups"></div>
-    <aside class="side">
-      <section class="box">
-        <h2 class="box-tit">비상전원 현황</h2>
-        <ul class="res-list" id="res"></ul>
-      </section>
-      <section class="box">
-        <h2 class="box-tit">이 화면의 판단 기준</h2>
-        <ol class="rule-list">
-          <li>기기가 버티는 시간이 짧고 자원이 늦게 닿는 가구를 먼저 보여 줍니다.</li>
-          <li>기기 종류로 순서를 정하지 않습니다.</li>
-          <li>버티는 시간은 제조사 사양을 낮춰 잡아 계산합니다. 보호자 입력은 시간을 줄이기만 하고 늘리지 않습니다.</li>
-          <li>출력·전원 종류·케이블이 맞는 자원만 추천합니다.</li>
-          <li>복구 예상과 이동 시간은 가정값입니다.</li>
-        </ol>
-        <button type="button" class="krds-btn small text" id="openAssume">가정값과 출처 보기</button>
-      </section>
-    </aside>
-  </div>
-
-  <section class="box assume" id="assume" hidden></section>
+  <section class="home-note">
+    <p>시연용 화면입니다. 가구와 위치는 모두 가상이고 실제 개인정보는 쓰지 않습니다. 등록한 내용은 이 휴대폰에만 저장되며 서버로 보내지 않습니다.</p>
+  </section>
 </main>
-
-<script src="js/data.js"></script>
-<script src="js/common.js"></script>
-<script src="js/rules.js"></script>
-<script src="js/dashboard.js"></script>
 </body>
 </html>
