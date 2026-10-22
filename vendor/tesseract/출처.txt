@@ -1,0 +1,5 @@
+Tesseract.js 5.1.1 (Apache-2.0) — tesseract.min.js, worker.min.js
+tesseract.js-core 5.1.1 (Apache-2.0) — *.wasm.js (simd 지원 브라우저는 simd 판)
+영어 학습 데이터: @tesseract.js-data/eng 1.0.0 (4.0.0_best_int, Apache-2.0)
+출처: https://cdn.jsdelivr.net/npm/ (2026-10-22 받음)
+주의: 웹 워커를 쓰므로 file:// 로 열면 동작하지 않는다. 배포 주소나 python3 -m http.server 로 연다.

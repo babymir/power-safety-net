@@ -1,0 +1,4 @@
+Leaflet 1.9.4 (BSD-2-Clause)
+출처: https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/
+지도 바탕: OpenStreetMap 기여자 (ODbL), 타일 서버 tile.openstreetmap.org
+지도 바탕(10/22 변경): 웹 주소로 열면 tile.openstreetmap.org (ODbL, Referer 필요), 파일로 열면 Esri World_Street_Map (Tiles © Esri — Esri, HERE, Garmin, OSM). CARTO는 API 키가 필요해 쓰지 않음

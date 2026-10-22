@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>전력안심망 지도·자원대장</title>
+<link rel="stylesheet" href="vendor/krds/krds.min.css">
+<link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="svc-head">
+  <div class="inner">
+    <a class="svc-name" href="index.html">전력안심망</a>
+    <span class="svc-role">운영자</span>
+    <nav class="svc-nav" aria-label="운영자 메뉴">
+      <a href="index.html">정전 대응 현황</a>
+      <a href="map.html" aria-current="page">지도 · 자원대장</a>
+    </nav>
+    <span class="krds-badge bg-light-gray">시연용 · 가상 데이터</span>
+  </div>
+</header>
+
+<main class="inner page">
+  <div class="page-title">
+    <h1>지도 · 자원대장</h1>
+    <p class="lead" id="lead"></p>
+  </div>
+
+  <div class="krds-tab-area">
+    <div class="tab line">
+      <ul role="tablist" id="scen"></ul>
+    </div>
+  </div>
+
+  <div class="map-layout">
+    <div class="map-box">
+      <div id="map" role="region" aria-label="가구와 비상전원 거점 지도"></div>
+      <p class="map-note t-subtle" id="mapNote">가구와 거점 위치는 모두 가상입니다.</p>
+    </div>
+    <aside class="side">
+      <section class="box">
+        <h2 class="box-tit">지도 보는 법</h2>
+        <ul class="legend">
+          <li><span class="lg-dot lg-crit"></span>119 연락</li>
+          <li><span class="lg-dot lg-assign"></span>자원 보내기</li>
+          <li><span class="lg-dot lg-short"></span>자원 부족</li>
+          <li><span class="lg-dot lg-ok"></span>대기</li>
+          <li><span class="lg-sq"></span>비상전원 거점</li>
+          <li><span class="lg-line"></span>추천 배정 (거점 → 가구)</li>
+        </ul>
+        <p class="ev-note">원 안의 숫자는 운영자 화면의 우선순위입니다.</p>
+      </section>
+      <section class="box" id="pick">
+        <h2 class="box-tit">선택한 곳</h2>
+        <p class="t-subtle">지도에서 가구나 거점을 누르세요.</p>
+      </section>
+    </aside>
+  </div>
+
+  <section class="sec" id="ledger">
+    <div class="grp-head">
+      <h2>비상전원 자원대장</h2>
+      <p>잔량이나 사용 가능 여부를 바꾸면 배정을 다시 계산합니다. 바꾼 값은 운영자 화면에도 반영되고, 이 브라우저에만 저장됩니다.</p>
+    </div>
+    <div id="ledgerAlert"></div>
+    <div class="krds-table-wrap"><table class="tbl col data ledger-tbl">
+      <caption class="sr-only">비상전원 자원 목록과 상태</caption>
+      <thead><tr><th scope="col">자원</th><th scope="col">거점</th><th scope="col">용량 · 출력</th><th scope="col">잔량</th><th scope="col">사용</th><th scope="col">지금 배정</th></tr></thead>
+      <tbody id="ledgerBody"></tbody>
+    </table></div>
+  </section>
+
+  <section class="sec" id="kepco">
+    <div class="grp-head">
+      <h2>시군구별 생명유지장치 사용 가구</h2>
+      <p id="kepcoLead"></p>
+    </div>
+    <div class="kepco" id="kepcoBody"></div>
+  </section>
+</main>
+
+<script src="vendor/leaflet/leaflet.js"></script>
+<script src="js/data.js"></script>
+<script src="js/common.js"></script>
+<script src="js/rules.js"></script>
+<script src="js/map.js"></script>
+</body>
+</html>
