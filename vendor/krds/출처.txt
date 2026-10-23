@@ -1,0 +1,2 @@
+KRDS HTML Component Kit (npm krds-uiux@1.1.0) — https://github.com/KRDS-uiux/krds-uiux
+받은 날: 2026-10-18. krds.min.css 와 Pretendard GOV 서브셋 글꼴만 복사. 정부 상징은 쓰지 않는다.
