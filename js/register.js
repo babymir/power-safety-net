@@ -134,7 +134,7 @@
       g.fillRect(0, (a.y + a.h) * 배, cv.width, cv.height);
       g.fillRect(0, a.y * 배, a.x * 배, a.h * 배);
       g.fillRect((a.x + a.w) * 배, a.y * 배, cv.width, a.h * 배);
-      g.strokeStyle = "#256ef4";
+      g.strokeStyle = "#2457C5";
       g.lineWidth = 3;
       g.strokeRect(a.x * 배, a.y * 배, a.w * 배, a.h * 배);
     };

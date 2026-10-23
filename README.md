@@ -22,4 +22,4 @@
 - 지도: OpenStreetMap 기여자, Esri
 
 ## 사용 라이브러리
-KRDS 1.1.0, Leaflet 1.9.4, Tesseract.js 5.1.1 (각 vendor 폴더의 출처 참고)
+Leaflet 1.9.4, Tesseract.js 5.1.1 (각 vendor 폴더의 출처 참고). 글꼴 IBM Plex Sans KR (Google Fonts, SIL Open Font License)
